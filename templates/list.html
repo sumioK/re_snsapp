@@ -7,6 +7,7 @@
 {% endblock header %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container">
   {% for item in object_list %}
   <div class="alert alert-success" role="alert">
@@ -16,5 +17,9 @@
     <a class="btn btn-primary" href="#" role="button">既読</a>
   </div>
   {% endfor %}
+  <a class="btn btn-danger mt-5" href="{% url 'logout' %}" role="button">Logout</a>
 </div>
+{% else %}
+please Login
+{% endif %}
 {% endblock content %}
