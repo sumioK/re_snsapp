@@ -2,21 +2,20 @@
 
 {% block header %}
 <div class="alert alert-primary" role="alert">
-  <h3>社内SNS</h3>
+  <h3>Detail page</h3>
 </div>
 {% endblock header %}
 
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container">
-  {% for item in object_list %}
   <div class="alert alert-success" role="alert">
-    <p><a href="{% url 'detail' item.pk %}">タイトル:{{ item.title }}</a></p>
-    <p>投稿者:{{ item.author }}</p>
+    <p>タイトル:{{ object.title }}</p>
+    <p>投稿者:{{ object.author }}</p>
+    <p><img src='{{ object.sns_image.url }}' width="300px"></p>
     <a class="btn btn-primary" href="#" role="button">いいね</a>
     <a class="btn btn-secondary" href="#" role="button">既読</a>
   </div>
-  {% endfor %}
   <a class="btn btn-danger mt-5" href="{% url 'logout' %}" role="button">Logout</a>
 </div>
 {% else %}
