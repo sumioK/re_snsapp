@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
+from .models import BoardModel
 
 def signupfunc(request):
   if request.method == "POST":
@@ -28,3 +29,7 @@ def loginfunc(request):
     pass
 
   return render(request,'login.html', {'context':'get method'})
+
+def listfunc(request):
+  object_list = BoardModel.objects.all()
+  return render(request, 'list.html', {'object_list': object_list})
